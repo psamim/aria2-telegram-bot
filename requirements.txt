@@ -1,0 +1,2 @@
+future==0.15.2
+-e git+https://github.com/leandrotoledo/python-telegram-bot.git/@56ab40d94fc2a4562fe1fe4b04f00643cdcde516#egg=python_telegram_bot-master

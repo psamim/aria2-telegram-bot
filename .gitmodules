@@ -1,0 +1,3 @@
+[submodule "diana"]
+	path = diana
+	url = https://github.com/baskerville/diana
