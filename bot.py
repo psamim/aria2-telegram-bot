@@ -1,19 +1,19 @@
+#!/usr/bin/env python3
+
 from telegram import Updater
 import subprocess
 import logging
 import sys
+import os
 
 # Enable logging
 root = logging.getLogger()
 root.setLevel(logging.INFO)
-
 ch = logging.StreamHandler(sys.stdout)
 ch.setLevel(logging.DEBUG)
-formatter = \
-    logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
 root.addHandler(ch)
-
 logger = logging.getLogger(__name__)
 
 # Commands
@@ -24,21 +24,27 @@ def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
 def diana(bot, update, args):
-    command = ' '.join(args)
+    logger.info('Message for diana.')
+    commands = list(args)
+    commands.insert(0, "./diana/diana")
+    logger.info('Command: "%s"' % (' '.join(commands)))
+
+    # Correct telegram mistakes
+    if commands[1] == 'help':
+        commands[1] = '--help'
 
     try:
-        output = subprocess.check_output(["./diana/diana", command], stderr=subprocess.STDOUT)
+        output = subprocess.check_output(commands, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         output = e.output
 
-    for line in output.splitlines():
-        bot.sendMessage(chat_id=update.message.chat_id, text=line.decode())
+    logger.info('Output: "%s"' % (output))
+    bot.sendMessage(chat_id=update.message.chat_id, text=output.decode())
 
 def main():
-    # Create the EventHandler and pass it your bot's token.
+    token = os.environ["TOKEN"]
     updater = Updater("161505178:AAGCkozCAakR6CDKw2SQTiO_-jeX_eM0xGY")
-
-    # Get the dispatcher to register handlers
+    updater = Updater(token)
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
