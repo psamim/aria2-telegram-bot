@@ -5,7 +5,6 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/samim/workspace/diana/
-Environment=TOKEN=token
 ExecStart=/home/samim/workspace/diana/run.sh
 User=samim
 Restart=on-failure

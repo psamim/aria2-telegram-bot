@@ -40,7 +40,6 @@ def diana(bot, update, args):
 
 def main():
     token = os.environ["TOKEN"]
-    updater = Updater("161505178:AAGCkozCAakR6CDKw2SQTiO_-jeX_eM0xGY")
     updater = Updater(token)
     dp = updater.dispatcher
 
