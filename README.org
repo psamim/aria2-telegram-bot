@@ -1,4 +1,4 @@
-#+TITLE: telegram-aria2-bot
+#+TITLE: aria2-telegram-bot
 
 * Description
 This will be a Telegram bot who controls a [[https://aria2.github.io/][aria2]] daemon. Using the bot one can add new downloads, start, stop, or remove them, check
