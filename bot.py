@@ -7,13 +7,10 @@ import sys
 import os
 
 # Enable logging
-root = logging.getLogger()
-root.setLevel(logging.INFO)
-ch = logging.StreamHandler(sys.stdout)
-ch.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-ch.setFormatter(formatter)
-root.addHandler(ch)
+logging.basicConfig(
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO)
+
 logger = logging.getLogger(__name__)
 
 # Commands
@@ -57,7 +54,7 @@ def main():
     dp.addErrorHandler(error)
 
     # Start the Bot
-    updater.start_polling(timeout=5)
+    updater.start_polling()
 
     # Run the bot until the user presses Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT
