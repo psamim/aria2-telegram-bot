@@ -1,12 +1,13 @@
 #+TITLE: aria2-telegram-bot
 
 * Description
-This will be a Telegram bot who controls a [[https://aria2.github.io/][aria2]] daemon. Using the bot one can add new downloads, start, stop, or remove them, check
+This will be a Telegram bot who controls an [[https://aria2.github.io/][aria2]] daemon using [[https://github.com/baskerville/diana][diana]]. Using the bot one can add new downloads, start, stop, or remove them, check
 their status and manage downloads by sending commands to the bot. I created this bot to control my downloads on a Raspberry Pi from any where.
 
 * Run
-To install and run the bot make sure Python and aria2 are installed. Create a Telegram bot (using [[https://telegram.me/BotFather][@BotFather]] in Telegram). Put your
-bot's token in the =run.sh= file and run it. Also make sure you have initialized the submodule.
+To install and run the bot make sure Python, virtualenv and aria2 are installed 
+and the git sub-module is initialized and updated. Create a Telegram bot (using [[https://telegram.me/BotFather][@BotFather]] in Telegram). Put your
+bot's token in the =run.sh= file and run it. This will create a virtual env, activate it and start the aria2, diana and the bot.
 
 #+BEGIN_SRC sh
 ./run.sh
